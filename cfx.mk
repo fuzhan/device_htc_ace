@@ -12,7 +12,7 @@ PRODUCT_RELEASE_NAME := DHD
 
 TARGET_BOOTANIMATION_NAME := 480
 
-# Inherit CM stuff
+# Inherit CFX stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 PRODUCT_NAME := cfx_ace
