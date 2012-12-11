@@ -10,7 +10,9 @@ $(call inherit-product, vendor/cm/config/gsm.mk)
 # Release Name
 PRODUCT_RELEASE_NAME := DHD
 
-TARGET_BOOTANIMATION_NAME := 480
+# Copy Bootanimation
+PRODUCT_COPY_FILES += \
+    vendor/cm/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
 
 # Inherit CFX stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
