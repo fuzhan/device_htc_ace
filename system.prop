@@ -80,3 +80,10 @@ media.stagefright.enable-meta=true
 media.stagefright.enable-scan=true
 media.stagefright.enable-http=true
 media.stagefright.enable-rtsp=true
+
+# Hardware Info
+ro.device.chipset=Qualcomm Snapdragon MSM8255
+ro.device.gpu=Adreno 205
+ro.device.front_cam=Not available
+ro.device.rear_cam=8 Megapixels
+ro.device.screen_res=480x800
