@@ -133,7 +133,7 @@
                    frameRate="15" />
             <Audio codec="aac"
                    bitRate="128000"
-                   sampleRate="44000"
+                   sampleRate="44100"
                    channels="2" />
         </EncoderProfile>
 
@@ -178,15 +178,15 @@
 
         <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
             <Video codec="h264"
-                   bitRate="8000000"
+                   bitRate="11000000"
                    width="1280"
                    height="720"
                    frameRate="15" />
             <!-- audio setting is ignored -->
             <Audio codec="aac"
-                   bitRate="96000"
-                   sampleRate="48000"
-                   channels="1" />
+                   bitRate="128000"
+                   sampleRate="44100"
+                   channels="2" />
         </EncoderProfile>
 
         <ImageEncoding quality="95" />
