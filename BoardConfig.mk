@@ -34,9 +34,6 @@
 # Compiler Optimization
 ARCH_ARM_HIGH_OPTIMIZATION := true
 
-# This is a low ram device, so do not use memory tweaks
-TARGET_IS_LOW_RAM := true
-
 # Kernel & Boot Loader
 TARGET_BOOTLOADER_BOARD_NAME := spade
 
