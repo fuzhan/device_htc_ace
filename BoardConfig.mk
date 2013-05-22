@@ -33,7 +33,6 @@
 
 # Compiler Optimization
 ARCH_ARM_HIGH_OPTIMIZATION := true
-TARGET_ARM_GCC_VER := 4.8
 
 # Kernel & Boot Loader
 TARGET_BOOTLOADER_BOARD_NAME := spade
