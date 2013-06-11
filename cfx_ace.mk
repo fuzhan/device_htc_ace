@@ -5,17 +5,17 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/htc/ace/device.mk)
 
 # Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+$(call inherit-product, vendor/cfx/config/gsm.mk)
 
 # Release Name
 PRODUCT_RELEASE_NAME := DHD
 
 # Copy Bootanimation
 PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
+    vendor/cfx/prebuilt/common/bootanimation/480.zip:system/media/bootanimation.zip
 
 # Inherit CFX stuff
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+$(call inherit-product, vendor/cfx/config/common_full_phone.mk)
 
 PRODUCT_NAME := cfx_ace
 PRODUCT_DEVICE := ace
