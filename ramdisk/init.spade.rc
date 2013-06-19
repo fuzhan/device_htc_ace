@@ -126,6 +126,24 @@ on boot
     chown radio radio /dev/radio_feedback
     chmod 0660 /dev/radio_feedback
 
+    # Advanced settings
+    chown root system /sys/android_touch/sweep2wake
+    chmod 0664 /sys/android_touch/sweep2wake
+    chown root system /sys/android_touch/s2w_allow_stroke
+    chmod 0664 /sys/android_touch/s2w_allow_stroke
+    chown root system /sys/android_touch/s2w_min_distance
+    chmod 0664 /sys/android_touch/s2w_min_distance
+    chown root system /sys/android_touch/s2w_register_threshold
+    chmod 0664 /sys/android_touch/s2w_register_threshold
+    chown root system /sys/android_touch/doubletap2wake
+    chmod 0664 /sys/android_touch/doubletap2wake
+    chown root system /sys/android_touch/dt2w_max_duration
+    chmod 0664 /sys/android_touch/dt2w_max_duration
+    chown root system /sys/android_touch/dt2w_min_duration
+    chmod 0664 /sys/android_touch/dt2w_min_duration
+    chown root system /sys/kernel/fast_charge/force_fast_charge
+    chmod 0664 /sys/kernel/fast_charge/force_fast_charge
+
     # Use a reasonable min free value for low memory killer
     write /proc/sys/vm/min_free_kbytes 32768
 
@@ -177,9 +195,14 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
+<<<<<<< HEAD
 # Bluetooth
 service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     class main
+=======
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class late_start
+>>>>>>> a7ec9ad... add new s2w/dt2w sysfs entries to init.spade.rc
     disabled
     oneshot
 
