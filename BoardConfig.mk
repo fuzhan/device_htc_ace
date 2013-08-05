@@ -37,6 +37,10 @@ ARCH_ARM_HIGH_OPTIMIZATION := true
 # Kernel & Boot Loader
 TARGET_BOOTLOADER_BOARD_NAME := spade
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/htc/ace/ramdisk/fstab.spade
+RECOVERY_FSTAB_VERSION := 2
+
 BOARD_KERNEL_CMDLINE := no_console_suspend=1
 BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x4000000
