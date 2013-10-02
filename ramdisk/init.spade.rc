@@ -189,19 +189,14 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     disabled
     oneshot
 
-service iprenew_wlan0 /system/bin/dhcpcd -n
+#bluetooth
+service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
 
-<<<<<<< HEAD
-# Bluetooth
-service dhcpcd_bnep0 /system/bin/dhcpcd -ABKL
-    class main
-=======
 service iprenew_wlan0 /system/bin/dhcpcd -n
     class late_start
->>>>>>> a7ec9ad... add new s2w/dt2w sysfs entries to init.spade.rc
     disabled
     oneshot
 
@@ -219,3 +214,9 @@ service akmd /system/bin/akmd
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p13 /dev/block/mmcblk0p14
     class core
     user root
+
+service setup_fs /system/bin/setup_fs mmcblk0p26 mmcblk0p27
+    class core
+    user root
+    group root
+    oneshot
