@@ -31,20 +31,14 @@
 # inherit from the proprietary version
 -include vendor/htc/ace/BoardConfigVendor.mk
 
-# Compiler Optimization
-ARCH_ARM_HIGH_OPTIMIZATION := true
-
-# Kernel & Boot Loader
 TARGET_BOOTLOADER_BOARD_NAME := spade
 
-BOARD_KERNEL_CMDLINE := no_console_suspend=1
+BOARD_KERNEL_CMDLINE := no_console_suspend=1 androidboot.selinux=permissive
 BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x4000000
 BOARD_KERNEL_PAGE_SIZE := 4096
 
-# GPS
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := spade
-BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 1240
 
 # WiFi
 WIFI_BAND := 802_11_ABGN
@@ -84,20 +78,17 @@ TARGET_KERNEL_CONFIG := spade_defconfig
 #TARGET_PREBUILT_KERNEL := device/htc/ace/prebuilt/kernel/kernel
 TARGET_ARM_EABI_GCC_VERSION := 4.8
 
-BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_ARCH_LOWMEM := true
+
+TARGET_RECOVERY_FSTAB := device/htc/ace/ramdisk/fstab.spade
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_SDCARD_DEVICE_PRIMARY := /dev/block/mmcblk1p1
-BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk1
-BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
-BOARD_USES_MMCUTILS := true
-BOARD_HAS_NO_MISC_PARTITION := true
+SKIP_SET_METADATA := true
 
+# Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun0/file
-TARGET_BOOTANIMATION_USE_RGB565 := true
-
-BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
+BOARD_VOLD_MAX_PARTITIONS := 36
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/ace/bluetooth
@@ -106,3 +97,5 @@ BOARD_BLUEDROID_VENDOR_CONF := device/htc/ace/configs/libbt_vndcfg.txt
 # No SDK blobs
 BUILD_EMULATOR_SENSORS_MODULE := false
 BUILD_EMULATOR_GPS_MODULE := false
+
+COMMON_GLOBAL_CFLAGS += -DWITH_SPADE_DSP_PROFILE

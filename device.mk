@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
@@ -36,9 +37,6 @@ PRODUCT_COPY_FILES += device/htc/ace/configs/gps.conf:system/etc/gps.conf
 
 # HTC BT audio config
 PRODUCT_COPY_FILES += device/htc/ace/configs/AudioBTID.csv:system/etc/AudioBTID.csv
-
-# vold config
-PRODUCT_COPY_FILES += device/htc/ace/configs/vold.fstab:system/etc/vold.fstab
 
 # ACDB
 PRODUCT_COPY_FILES += \
@@ -101,19 +99,6 @@ PRODUCT_COPY_FILES += \
 	device/htc/ace/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc \
 	device/htc/ace/idc/elan-touchscreen.idc:system/usr/idc/elan-touchscreen.idc
 
-# Kernel
-ifneq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/htc/ace/prebuilt/kernel/kernel
-
-PRODUCT_COPY_FILES += \
-	$(LOCAL_KERNEL):kernel
-
-# Kernel modules
-PRODUCT_COPY_FILES += \
-	device/htc/ace/prebuilt/kernel/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
-	device/htc/ace/prebuilt/kernel/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko
-endif
-
 # Copy bcm4329 firmware
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
@@ -123,11 +108,9 @@ PRODUCT_COPY_FILES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	e2fsck \
-	setup_fs
+	e2fsck
 
-# Build extra non-CM packages
+# Torch
 PRODUCT_PACKAGES += \
 	Torch
 
@@ -153,6 +136,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.vold.umsdirtyratio=20
 
+# Turn off ZRAM by default
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.zram.default=0
+
+# Quiet down GC prints
+PRODUCT_PROPERTY_OVERRIDES += \
+	dalvik.vm.debug.alloc=0
+
 # We have enough space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
@@ -172,3 +163,7 @@ $(call inherit-product, vendor/htc/ace/ace-vendor.mk)
 
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+# lower the increment
+ADDITIONAL_BUILD_PROPERTIES += dalvik.vm.heapgrowthlimit=36m
+
