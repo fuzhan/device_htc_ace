@@ -38,24 +38,6 @@ BOARD_KERNEL_RECOVERY_CMDLINE := $(BOARD_KERNEL_CMDLINE) msmsdcc_power_gpio=88
 BOARD_KERNEL_BASE := 0x4000000
 BOARD_KERNEL_PAGE_SIZE := 4096
 
-BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := spade
-
-# WiFi
-WIFI_BAND := 802_11_ABGN
-WPA_SUPPLICANT_VERSION := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_WLAN_DEVICE := bcmdhd
-WIFI_DRIVER_FW_PATH_STA := "/system/vendor/firmware/fw_bcmdhd.bin"
-WIFI_DRIVER_FW_PATH_AP := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_P2P := "/system/vendor/firmware/fw_bcmdhd_apsta.bin"
-WIFI_DRIVER_FW_PATH_PARAM := "/sys/module/bcmdhd/parameters/firmware_path"
-WIFI_DRIVER_MODULE_NAME := bcmdhd
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/bcmdhd.ko"
-BOARD_LEGACY_NL80211_STA_EVENTS := true
-
 # cat /proc/emmc
 #dev:        size     erasesize name
 #mmcblk0p17: 00040000 00000200 "misc"
@@ -92,7 +74,7 @@ BOARD_VOLD_MAX_PARTITIONS := 36
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/ace/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/htc/ace/configs/libbt_vndcfg.txt
+BOARD_BLUEDROID_VENDOR_CONF := device/htc/ace/bluetooth/libbt_vndcfg.txt
 
 # No SDK blobs
 BUILD_EMULATOR_SENSORS_MODULE := false
